@@ -1,0 +1,10 @@
+#!/usr/bin/env -S bash -c 'exec bash "$(dirname -- "$0")/launch.sh"'
+# The header supports file managers' Run as a Program action.
+# Desktop-aware launchers read the entry below instead.
+[Desktop Entry]
+Type=Application
+Name=Native CSM VGA Selector 1.2 USB Installer
+Comment=Prepare a USB device for Native CSM VGA Selector
+Terminal=true
+Exec=bash -c "p=\\$1; if [[ -z \\"\\$p\\" ]]; then p=\\${GIO_LAUNCHED_DESKTOP_FILE-}; fi; d=\\$(dirname -- \\"\\$p\\"); if [[ -f \\"\\$d/launch.sh\\" ]]; then exec bash \\"\\$d/launch.sh\\"; elif [[ -f ./launch.sh ]]; then exec bash ./launch.sh; else printf 'Cannot locate launch.sh beside this launcher. Keep the extracted package together.\\\\n'; printf '\\\\nPress Enter to close this installer window. '; read -r answer; exit 1; fi" bash %k
+Categories=Utility;

@@ -1,0 +1,96 @@
+[Defines]
+  INF_VERSION = 0x00010005
+  BASE_NAME = NativeCsmVgaSelector
+  FILE_GUID = 7C1BB506-89CB-474A-A026-C1A3F607E843
+  MODULE_TYPE = UEFI_APPLICATION
+  VERSION_STRING = 1.2
+  ENTRY_POINT = UefiMain
+[Sources]
+  LegacyDispatch.c
+  LegacyDispatch.h
+  LegacyPciIdentity.h
+  BootReport.c
+  BootReport.h
+  BootCountdown.c
+  BootCountdown.h
+  RomPlacement.c
+  RomPlacement.h
+  RomRecovery.c
+  RomRecovery.h
+  LegacyRomGuard.c
+  LegacyRomGuard.h
+  LegacyStorageRom.c
+  LegacyStorageRom.h
+  LegacyFirmwareDisk.c
+  LegacyFirmwareDisk.h
+  BuildGuards.c
+  ConfigFile.c
+  ConfigFile.h
+  ConfigRecovery.c
+  ConfigRecovery.h
+  ConfigEdit.c
+  ConfigEdit.h
+  PciIdLookup.c
+  PciIdLookup.h
+  PciNames.c
+  PciNames.h
+  TargetSelection.c
+  TargetSelection.h
+  Marker.c
+  Marker.h
+  MarkerConfig.h
+  NativeCsmVgaSelector.c
+  NativeCsmVgaBoot.c
+  NativeCsmVgaBoot.h
+  NativeCsmVgaProbe.c
+  NativeCsmVgaProbe.h
+  CandidateIni.c
+  CandidateIni.h
+  LegacyBootTarget.c
+  LegacyBootTarget.h
+  Bbs.c
+  Bbs.h
+  BootOptions.c
+  BootOptions.h
+  MemoryMap.c
+  MemoryMap.h
+  AppFile.c
+  AppFile.h
+  Log.c
+  Log.h
+  StatusPrint.c
+  StatusPrint.h
+  ProbeConfig.c
+  ProbeConfig.h
+  PciEnumerate.c
+  PciEnumerate.h
+  OptionRom.c
+  OptionRom.h
+  RuntimePlan.c
+  RuntimePlan.h
+[Packages]
+  MdePkg/MdePkg.dec
+  NativeCsmVgaSelectorPkg/NativeCsmVgaSelectorPkg.dec
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiLib
+  DevicePathLib
+  MemoryAllocationLib
+  BaseLib
+  BaseMemoryLib
+  PrintLib
+[Protocols]
+  gEfiDevicePathProtocolGuid ## CONSUMES
+  gEfiLegacyBiosProtocolGuid ## CONSUMES
+  gEfiLegacyRegion2ProtocolGuid ## CONSUMES
+  gEfiPciIoProtocolGuid ## CONSUMES
+  gEfiPciRootBridgeIoProtocolGuid ## CONSUMES
+  gEfiGraphicsOutputProtocolGuid ## SOMETIMES_CONSUMES
+  gEfiLoadedImageProtocolGuid ## CONSUMES
+  gEfiSimpleFileSystemProtocolGuid ## CONSUMES
+  gEfiSimpleTextOutProtocolGuid ## CONSUMES
+  gEfiSerialIoProtocolGuid ## SOMETIMES_CONSUMES
+[Guids]
+  gEfiFileInfoGuid
