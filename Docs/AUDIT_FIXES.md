@@ -1,4 +1,4 @@
-# Audit-fix prerelease: 1.2.2-audit-fixes.1
+# Changes in 1.2.3
 
 This candidate builds on v1.2.2 and implements the September 19 audit and the
 selected-disk warning policy. Physical native-CSM boot testing of this changed

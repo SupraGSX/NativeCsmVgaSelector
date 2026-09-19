@@ -801,7 +801,7 @@ NativeCsmVgaBootRun (
   }
 
   Phase (&Logger, L"NCV_BOOT_START");
-  LogPrint (&Logger, L"NCV_BUILD=1.2.2-audit-fixes.1 base=9104ae943c53\r\n");
+  LogPrint (&Logger, L"NCV_BUILD=1.2.3\r\n");
   LogPrint (&Logger, L"NCV_BOOT_AUTORUN_ENABLED\r\n");
   LogPrint (&Logger, L"NCV_MODE=BOOT\r\n");
   Status = NativeCsmVgaRuntimePlanBuild (&Files, &Logger, Config, &Plan);

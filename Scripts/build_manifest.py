@@ -15,7 +15,7 @@ def command(args):
 efi = a.output.parent / 'BOOTX64.EFI'
 source_files = sorted(p for p in (a.source / 'NativeCsmVgaSelectorPkg').rglob('*') if p.is_file())
 a.output.write_text(json.dumps({
-    'version': '1.2.2-audit-fixes.1',
+    'version': '1.2.3',
     'source_base': command(['git', '-C', str(a.source), 'rev-parse', 'HEAD']),
     'source_status': command(['git', '-C', str(a.source), 'status', '--porcelain']),
     'source_hashes': {p.relative_to(a.source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in source_files},

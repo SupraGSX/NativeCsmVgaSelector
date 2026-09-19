@@ -1,11 +1,16 @@
-# Validation — prerelease 1.2.2-audit-fixes.1
+# Validation — prerelease 1.2.3
 
-## Released executable
+## Current prerelease executable
 
-Release and Debug contain the same hardware-tested 237,568-byte EFI, SHA-256
-`e0f14f7904682e9b86161dac7ac8f04e29f60796c8b1e4db5a83698f004d8e06`.
-The executable banner and installer payload names retain the 1.2 family name.
-Release preparation changed documentation and tests, not production code.
+Release and Debug contain the same 1.2.3 EFI. Its size and SHA256 are recorded
+in [VERSION.md](../VERSION.md). Physical native-CSM boot testing of this changed
+binary remains pending. The executable banner and installer payload names
+retain the 1.2 family name; boot logs record `NCV_BUILD=1.2.3`.
+
+Version 1.2.3 retains the complete code-audit implementation and changes its
+build label. Both editions are rebuilt and checked against the frozen layout.
+See [the completed audit checks](AUDIT_FIXES.md#validation-and-remaining-platform-checks)
+for the applicable host and synthetic-firmware results and their limitations.
 
 Both editions pass the frozen ABI checks: configuration 576 bytes, runtime
 plan 24,824 bytes, and legacy target context 3,816 bytes. Disassembly retains
@@ -13,9 +18,12 @@ the reviewed Boot prologue (`0x7000 + 0x578`, same saved registers), one GOP
 disconnect and one native legacy-boot handoff. This layout check is a
 regression precaution, not a claim of a proven firmware size threshold.
 
-## Physical test — 2026-09-19
+## Historical v1.2.2 physical test — 2026-09-19
 
-The returned USB executable matches the release hash. Its newest boot log
+This result belongs to the older 237,568-byte v1.2.2 EFI, SHA256
+`e0f14f7904682e9b86161dac7ac8f04e29f60796c8b1e4db5a83698f004d8e06`,
+and does not validate the current 1.2.3 prerelease.
+The returned USB executable matches that historical hash. Its newest boot log
 records firmware-AHCI corroboration, a unique selected disk, completed GPU
 routing/ROM dispatch/INT10 validation, a verified BBS priority transaction,
 and the native legacy-boot boundary. No rejection or returned failure follows
@@ -25,7 +33,7 @@ This establishes successful boot for the tested configuration. The log alone
 cannot observe OS completion after control leaves the EFI application.
 Private logs and hardware identifiers are not included in release packages.
 
-## Automated checks
+## Historical v1.2.2 automated checks
 
 | Check | Result |
 | --- | --- |
@@ -47,7 +55,7 @@ The compatibility path is not keyed to a vendor, model, or fixed controller
 address. It nevertheless requires a uniquely corroborated controller, readable
 BIOS-resident pointers, stable handler-prefix bytes and bounded strings. It
 does not validate the handler's full executable extent. The historical release
-used stricter firmware-status policy. In the audit-fix candidate, selected-disk
+used stricter firmware-status policy. In version 1.2.3, selected-disk
 firmware status/order restrictions are advisory; ambiguous identities, missing
 handler provenance, unsafe ranges and actual ROM overlaps remain stops.
 See [storage handling](LEGACY_STORAGE.md) and [compatibility](COMPATIBILITY.md).
@@ -79,14 +87,16 @@ Optional private capture inputs are deliberately not distributed.
 
 ## Retained installer validation
 
-The unchanged Windows/Linux installers were previously exercised with
+Earlier Windows/Linux installer versions were exercised with
 disposable virtual USBs, including installation, cancellation, existing-loader
 backup, checksum rejection and internal-disk exclusion. They prepare one active
 256 MiB FAT32 partition at a 1 MiB offset on an MBR USB disk. Windows tests used
 an isolated Windows 11 guest; physical backing storage remained read-only.
 Linux direct-script and desktop-launcher checks cover paths with spaces and
-keeping errors visible. Those full installer runs were not repeated for this
-release; package hashes and launcher host regressions were rechecked.
+keeping errors visible. Those full installer runs do not establish the changed installers' native
+platform behavior. Current file-operation and identity tests are documented
+in [the audit checks](AUDIT_FIXES.md) and [installer testing](INSTALLER_TESTING.md);
+native Windows storage and physical hot-plug tests remain pending.
 
 Passing these checks does not guarantee every native-CSM implementation, GPU,
 display sink, storage device or firmware setting. In particular, the overlap
