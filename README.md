@@ -1,8 +1,7 @@
 # Native CSM VGA Selector 1.2.3
 
 
-An x86-64 UEFI application selects a configured legacy VGA adapter and boot disk
-through the firmware's native CSM. It does not supply a CSM or a GPU option ROM.
+An x86-64 UEFI application allows selection of a non-primary GPU through the firmware's native CSM. It does not supply a CSM or a GPU option ROM.
 A compatible legacy VGA ROM, usable native-CSM protocols, and a legacy boot
 installation are required. Secure Boot must allow this unsigned application.
 
