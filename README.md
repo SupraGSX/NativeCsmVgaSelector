@@ -1,16 +1,5 @@
 # Native CSM VGA Selector 1.2.3
 
-**Prerelease: physical native-CSM boot testing is still pending.**
-
-This release candidate includes the code-audit fixes and selected-disk warning
-policy described in [audit fixes](Docs/AUDIT_FIXES.md). A uniquely selected disk
-that passes structural preflight may be attempted despite firmware policy
-warnings; those warnings remain in the log and final error screen.
-
-Download **NativeCsmVgaSelector-1.2.3.zip** for the compiled
-application and USB installers, or the matching **-source.zip** for the complete
-source. Executable and installer payload names retain the 1.2 family name.
-See [validation](Docs/VALIDATION.md) for completed tests and platform limits.
 
 An x86-64 UEFI application selects a configured legacy VGA adapter and boot disk
 through the firmware's native CSM. It does not supply a CSM or a GPU option ROM.
